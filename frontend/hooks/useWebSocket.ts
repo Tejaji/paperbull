@@ -7,8 +7,7 @@ export function useWebSocket(url: string) {
   const [lastMessage, setLastMessage] = useState<any>(null);
   const ws = useRef<WebSocket | null>(null);
   const subscribers = useRef<Map<string, Set<(data: any) => void>>>(new Map());
-  const reconnectTimeout = useRef<NodeJS.Timeout>();
-
+  const reconnectTimeout = useRef<NodeJS.Timeout>(null);
   useEffect(() => {
     function connect() {
       try {
